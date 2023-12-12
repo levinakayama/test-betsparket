@@ -5,7 +5,8 @@ import Api from './axios'
 import InputMask from './InputMask'
 
 function App() {
-  const [solution,setSolution] = useState(true)
+  const [solution, setSolution] = useState(true)
+  const [isOk, setIsOk] = useState(null)
   const [error, setError] = useState('')
 
   const [heightX, setHeightX] = useState('0%')
@@ -28,15 +29,18 @@ function App() {
       valueZ: parseInt(valueZ),
     })
 
-    if(res===false){
+    if (res === false) {
       setError('Error connecting to server')
       return
     }
 
-    if(res.response.code!==0){
+    if (res.response.code !== 0) {
       setError(res.response.msg)
       return
     }
+
+    setIsOk(null)
+    setIsOk(res.data.validate)
   }
 
   const biggerNumberXY = useCallback(() => {
@@ -238,7 +242,7 @@ function App() {
           </div>
           <div className='col-md-4 d-flex justify-content-center'>
             <div className='bucket d-flex align-items-end'>
-              <div className='bucket-water bg-warning' style={{ height: heightZ }}></div>
+              <div className={`bucket-water ${isOk === true ? 'bg-success' : 'bg-warning'}`} style={{ height: heightZ }}></div>
             </div>
           </div>
         </div>
@@ -253,6 +257,12 @@ function App() {
             <button type='button' className='btn btn-outline-secondary btn-block' onClick={_ => transferToX()}>Transfer to X</button>
             <button type='button' className='btn btn-outline-danger btn-block' onClick={_ => emptyY()}>Empty</button>
           </div>
+          {isOk !== null ? (
+            <div className='col-md-4 d-flex flex-column align-items-center justify-content-center'>
+              <i className={`fas ${isOk ? 'fa-thumbs-up' : 'fa-thumbs-down'} fa-4x ${isOk ? 'text-success' : 'text-danger'} mb-2`}></i>
+              Not Solved
+            </div>
+          ) : ''}
         </div>
         <div className='row mt-4 pb-4'>
           <div className='col-md-12'>

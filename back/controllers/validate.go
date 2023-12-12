@@ -14,17 +14,7 @@ func ValidatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if *row.ValueX <= 0 {
-		helpers.ResponseError(w, 1, "Final X more then zero")
-		return
-	}
-
 	if !helpers.ValidateInt64Required(w, row.ValueY, "Final Y") {
-		return
-	}
-
-	if *row.ValueY <= 0 {
-		helpers.ResponseError(w, 1, "Final Y more then zero")
 		return
 	}
 
@@ -37,8 +27,15 @@ func ValidatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	validate := false
+	if *row.ValueX == *row.ValueZ {
+		validate = true
+	} else if *row.ValueY == *row.ValueZ {
+		validate = true
+	}
+
 	res := map[string]interface{}{
-		"msg": "Registro excluído com sucesso!",
+		"validate": validate,
 	}
 	helpers.ResponseOk(w, res)
 }
