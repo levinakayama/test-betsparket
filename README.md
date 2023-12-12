@@ -11,6 +11,9 @@
 - ***/front*** (frontend folder React.js)
 
 ## Installation Instructions
+
+> **_NOTA:_**  Use a Shell terminal.
+
 - Acesse a pasta onde irá clonar o projeto
 
 - Faça o pull da imagem **ertfly/php7.4.9-apache-buster**
