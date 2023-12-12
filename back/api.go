@@ -19,7 +19,7 @@ func main() {
 	router.HandleFunc("/{a}/{b}/{c}/{d}", func(w http.ResponseWriter, r *http.Request) {}).Methods("OPTIONS")
 
 	//token
-	router.HandleFunc("/calculate", controllers.CalculatePost).Methods("POST")
+	router.HandleFunc("/validate", controllers.ValidatePost).Methods("POST")
 
 	mux.CORSMethodMiddleware(router)
 	router.Use(Middleware)
