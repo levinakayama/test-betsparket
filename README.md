@@ -3,6 +3,8 @@
 ## Requirements
 - Docker
 - Docker Compose (version '2')
+- React.js (18)
+- Go (1.20)
 
 ## Understanding the structure
 - ***/back*** (backend folder Go)
@@ -53,7 +55,7 @@ ports:
 cd back/
 ```
 
-- Copy ***sample.env*** to ***.env***
+- Copy backend env ***sample.env*** to ***.env***
 ```
 cp sample.env .env
 ```
@@ -62,41 +64,32 @@ cp sample.env .env
 ```
 cd ../front/
 ```
-> **_NOTA:_**  Não mexa no arquivo **.env** pois já esta configurando com a estrutura dos containers
-> **_NOTA:_**  O docker-compose foi configurado para que os containers tenha o seus hosts utilizando o atributo ***container_name**, exemplo o **DB_HOST** do arquivo **.env** ficaria **DB_HOST=teste.db** o nome dado no atributo, então é necessário que o docker-compose, na versão sitada, suba os containers com os nomes definidos, caso não terá que alterar os dados de acesso do banco, caso OK não precisa alterar pode deixar os dados como estão apenas execute a cópia.
 
-- Volte a pasta raíz do projeto.
+- Copy front env ***sample.env*** to ***.env***
+```
+cp sample.env .env
+```
+
+- Unzip ***node_modules.zip*** OR install packages ```npm install```
+```
+unzip node_modules.zip
+```
+
+- Back folder
 ```
 cd ../
 ```
 
-- Criei o network dos containers
+- Create bridge network
 ```
-docker network create teste-dev
+docker network create bucket-net
 ```
-> **_NOTA:_**  Se a rede teste-dev já existir ignore.
+> **_NOTA:_**  If exists ignore this action.
 
-- Altere o arquivo **docker-compose.yml** substitua na parte **8016** pela porta web disponível na sua máquina
+- Build containers
 ```
-    ...
-    ports:
-      - '8016:80'
-    ...
-``` 
-
-- Altere o arquivo **docker-compose.yml** substitua na parte **3307** pela porta web disponível na sua máquina
+docker-compose up -d --build
 ```
-    ...
-    ports:
-      - '3307:3306'
-    ...
-``` 
-
-- Uma vez alterado o arquivo **docker-compose.yml** vamos utilizar o docker-compose para criar os containers
-```
-docker-compose up -d
-```
-> **_NOTA:_**  O comando reflete a versão do docker que não tem o docker-compose imbutido.
 
 - Ao finalizar vamos instalar os pacotes das dependências
 ```
