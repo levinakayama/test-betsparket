@@ -91,36 +91,14 @@ docker network create bucket-net
 docker-compose up -d --build
 ```
 
-- Ao finalizar vamos instalar os pacotes das dependências
-```
-docker exec -it teste.api composer install
-```
-> **_NOTA:_**  O nome **teste.api** é o nome dado no container via atributo **container_name**, caso o atributo não funcionar na sua versão do docker-compose, é só renomear o container utilizando o comando `docker rename {id_do_container} teste.api`, o id do container pode ser consultado utilizando o comando `docker ps` procure o id na coluna **CONTAINER ID**.
+- Try access the link
+- http://localhost:3000
 
-- Vamos rodar o migrate da aplicação, por padrão já é criado automáticamente um usuário para acessar o sistema.
-```
-docker exec -it teste.api php artisan migrate
-```
-> **_NOTA:_**  O migrate irá criar um usuário **admin** e senha **admin** para acessar o ambiente e testar o CRUD
+## What was created
+- Water Jug Challenge
 
-## Se sua máquina for linux ou mac leia
-- No caso desses sitemas operacionais, as pastas do laravel **storage** ficam sem permissão de escrita, caso for execute os comandos abaixo.
-```
-sh chmod.sh
-```
-> **_NOTA:_**  O arquivo **chmod.sh** é um bash aplicando chmod nas pastas necessárias
-
-## Testes unitários
-- Caso queira executar os testes unitários, foram criados alguns cenários para atestar o conhecimento em PHPUnit.
-```
-docker exec -it teste.api vendor/bin/phpunit 
-```
-
-## Rodando a aplicação
-- Na porta externa configurada no container **teste.api** no utilize para acessar o sistema http://localhost:{porta_configurada}/, caso não tenha alterado as portas basta acessar a parte default da configuração http://localhost:8016
-
-## O que foi criado
-- Seguindo os requisitos foi criado um CRUD de incidentes e adicionei um crud de usuários de acesso ao sistema.
-
-## Dos requisitos algum não foi usado ?
-- Todos os requisitos foram aplicados no teste com excessão do **redux**, no mais tudo foi seguido de acordo com o enunciado do teste.
+## How was it resolved
+- Create the layout first, with the buttons specified in the rules and animations
+- Allows entry of 3 values, X, Y and Z, according to test restrictions
+- To identify when there is no solution, check the smallest limit between X and Y and apply %2 of the result and compare it with %2 of Z.
+- Success is when X or Y reaches the value of Z.
