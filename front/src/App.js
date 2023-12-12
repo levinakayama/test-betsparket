@@ -44,6 +44,11 @@ function App() {
   const fillX = () => {
     setError('')
 
+    if (parseInt(finalX) > 0) {
+      setError('Value of X already exists')
+      return;
+    }
+
     if (valueX === '') {
       setError('Fill X required!')
       return
@@ -59,12 +64,34 @@ function App() {
     setFinalX(parseInt(valueX))
   }
 
-  const emptyX = () => {
+  const transferToY = () => {
+    let v = parseInt(finalX) + parseInt(finalY)
+    if (v > parseInt(valueY)) {
+      setError('Y value does not accommodate this volume.');
+      return;
+    }
+
+    let bigger = biggerNumberXY()
+    setHeightY(Math.floor((parseInt(v) / bigger) * 100).toString() + '%')
+    setFinalY(v)
+
     setHeightX('0%')
+    setFinalX(0)
+  }
+
+  const emptyX = () => {
+    setError('')
+    setHeightX('0%')
+    setFinalX(0);
   }
 
   const fillY = () => {
     setError('')
+
+    if (parseInt(finalY) > 0) {
+      setError('Value of X already exists')
+      return;
+    }
 
     if (valueY === '') {
       setError('Fill X required!')
@@ -81,12 +108,17 @@ function App() {
     setFinalY(parseInt(valueY))
   }
 
+  const transferToX = () => {
+
+  }
+
   const emptyY = () => {
+    setError('')
     setHeightY('0%')
+    setFinalY(0);
   }
 
   useEffect(() => {
-    console.log(valueZ)
     let bigger = biggerNumberXY()
     setHeightZ(Math.floor((parseInt(valueZ) / bigger) * 100).toString() + '%')
   }, [valueZ, setHeightZ, biggerNumberXY])
@@ -114,12 +146,16 @@ function App() {
         <div className='row'>
           <div className='col-md-4 d-flex justify-content-center'>
             <div className='bucket d-flex align-items-end'>
-              <div className='bucket-water bg-primary' style={{ height: heightX }}></div>
+              <div className='bucket-water bg-primary' style={{ height: heightX }}>
+                <div className='bucket-final'>{finalX}</div>
+              </div>
             </div>
           </div>
           <div className='col-md-4 d-flex justify-content-center'>
             <div className='bucket d-flex align-items-end'>
-              <div className='bucket-water bg-primary' style={{ height: heightY }}></div>
+              <div className='bucket-water bg-primary' style={{ height: heightY }}>
+                <div className='bucket-final'>{finalY}</div>
+              </div>
             </div>
           </div>
           <div className='col-md-4 d-flex justify-content-center'>
@@ -131,12 +167,12 @@ function App() {
         <div className='row mt-3'>
           <div className='col-md-4'>
             <button type='button' className='btn btn-outline-primary btn-block' onClick={_ => fillX()}>Fill</button>
-            <button type='button' className='btn btn-outline-secondary btn-block'>Transfer Y</button>
+            <button type='button' className='btn btn-outline-secondary btn-block' onClick={_ => transferToY()}>Transfer to Y</button>
             <button type='button' className='btn btn-outline-danger btn-block' onClick={_ => emptyX()}>Empty</button>
           </div>
           <div className='col-md-4'>
             <button type='button' className='btn btn-outline-primary btn-block' onClick={_ => fillY()}>Fill</button>
-            <button type='button' className='btn btn-outline-secondary btn-block'>Transfer X</button>
+            <button type='button' className='btn btn-outline-secondary btn-block' onClick={_ => transferToX()}>Transfer to X</button>
             <button type='button' className='btn btn-outline-danger btn-block' onClick={_ => emptyY()}>Empty</button>
           </div>
         </div>
