@@ -8,8 +8,8 @@ ADD . /app
 WORKDIR /app
 
 RUN go get 
-RUN go install siios
+RUN go install bucket
 
-ENTRYPOINT ["/go/bin/siios"]
+ENTRYPOINT ["/go/bin/bucket"]
 
 EXPOSE 8000

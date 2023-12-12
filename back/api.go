@@ -1,10 +1,10 @@
 package main
 
 import (
+	"bucket/controllers"
+	"bucket/helpers"
 	"log"
 	"net/http"
-	"siios/controllers"
-	"siios/helpers"
 
 	"github.com/gorilla/mux"
 )

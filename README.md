@@ -70,9 +70,9 @@ cd ../front/
 cp sample.env .env
 ```
 
-- Unzip ***node_modules.zip*** OR install packages ```npm install```
+- Install packages React.js
 ```
-unzip node_modules.zip
+npm install
 ```
 
 - Back folder

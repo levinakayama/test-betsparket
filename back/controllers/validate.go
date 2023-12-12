@@ -1,9 +1,9 @@
 package controllers
 
 import (
+	"bucket/helpers"
 	"encoding/json"
 	"net/http"
-	"siios/helpers"
 )
 
 func ValidatePost(w http.ResponseWriter, r *http.Request) {
