@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import './App.css'
 import Api from './axios'
+import InputMask from './InputMask'
 
 function App() {
 
@@ -187,15 +188,15 @@ function App() {
         <div className='row mt-5'>
           <div className='col-md-4 form-group'>
             <label className='d-block text-center'>Bucket X</label>
-            <input type='number' className='form-control' placeholder='Value X' value={valueX} onChange={e => setValueX(e.target.value)} />
+            <InputMask mask="num" value={valueX} onChange={v => setValueX(v)} placeholder='Value X' className='form-control' />
           </div>
           <div className='col-md-4 form-group'>
             <label className='d-block text-center'>Bucket Y</label>
-            <input type='number' className='form-control' placeholder='Value Y' value={valueY} onChange={e => setValueY(e.target.value)} />
+            <InputMask mask="num" value={valueY} onChange={v => setValueY(v)} placeholder='Value Y' className='form-control' />
           </div>
           <div className='col-md-4 form-group'>
             <label className='d-block text-center'>Bucket Z</label>
-            <input type='number' className='form-control' placeholder='Value Z' value={valueZ} onChange={e => setValueZ(e.target.value)} />
+            <InputMask mask="num" value={valueZ} onChange={v => setValueZ(v)} placeholder='Value Z' className='form-control' />
           </div>
         </div>
 
