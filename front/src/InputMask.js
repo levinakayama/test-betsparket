@@ -8,7 +8,8 @@ function InputMask({
     mask = '',
     value = null,
     style = {},
-    onChange = () => { }
+    onChange = () => { },
+    onBlur = () => { }
 }) {
 
     const [internalValue, setInternalValue] = useState('')
@@ -220,7 +221,7 @@ function InputMask({
         if (value) {
             setInternalValue(value)
         }
-    }, [value,setInternalValue])
+    }, [value, setInternalValue])
 
     return (
         <input
@@ -230,7 +231,7 @@ function InputMask({
             placeholder={placeholder}
             defaultValue={value}
             onChange={e => setInternalValue(mask ? maskKeyup(e, mask) : e.target.value)}
-            onBlur={e => setInternalValue(mask ? maskBlur(e, mask) : e.target.value)}
+            onBlur={e => {setInternalValue(mask ? maskBlur(e, mask) : e.target.value); onBlur(e)}}
             onClick={(e) => { e.target.select() }} />
     )
 }

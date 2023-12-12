@@ -106,7 +106,7 @@ function App() {
     setError('')
 
     if (parseInt(finalY) > 0) {
-      setError('Value of X already exists')
+      setError('Value of Y already exists')
       return
     }
 
@@ -160,6 +160,16 @@ function App() {
     setFinalY(0)
   }
 
+  const checkSolution = useCallback(() => {
+    setError('')
+    let bigger = biggerNumberXY()
+    let z = parseInt(valueZ)
+    if ((bigger % 2) !== (z % 2)) {
+      setError('NO SOLUCION...')
+      return
+    }
+  }, [setError, biggerNumberXY, valueZ])
+
   useEffect(() => {
     setError('')
     let bigger = biggerNumberXY()
@@ -175,10 +185,9 @@ function App() {
       setError('Y must be greater than zero')
       return
     }
-    setFinalX(0)
-    setFinalY(0)
     setHeightZ(Math.floor((parseInt(valueZ) / bigger) * 100).toString() + '%')
-  }, [valueX, valueY, valueZ, setHeightZ, biggerNumberXY])
+    checkSolution()
+  }, [valueX, valueY, valueZ, setHeightZ, biggerNumberXY, checkSolution])
 
   return (
     <div className='container'>
@@ -188,11 +197,11 @@ function App() {
         <div className='row mt-5'>
           <div className='col-md-4 form-group'>
             <label className='d-block text-center'>Bucket X</label>
-            <InputMask mask="num" value={valueX} onChange={v => setValueX(v)} placeholder='Value X' className='form-control' />
+            <InputMask mask="num" value={valueX} onChange={v => setValueX(v)} onBlur={_ => emptyX()} placeholder='Value X' className='form-control' />
           </div>
           <div className='col-md-4 form-group'>
             <label className='d-block text-center'>Bucket Y</label>
-            <InputMask mask="num" value={valueY} onChange={v => setValueY(v)} placeholder='Value Y' className='form-control' />
+            <InputMask mask="num" value={valueY} onChange={v => setValueY(v)} onBlur={_ => emptyY()} placeholder='Value Y' className='form-control' />
           </div>
           <div className='col-md-4 form-group'>
             <label className='d-block text-center'>Bucket Z</label>
