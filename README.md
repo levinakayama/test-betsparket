@@ -16,19 +16,19 @@
 
 - Access a folder of your choice to clone the project
 
-- Clone the project
+- Clone the project with ***SSH***
 ```
 $ git clone git@github.com:levinakayama/test-betsparket.git
 ```
 
-- Or
+- Or ***HTTPS***
 ```
 $ git clone https://github.com/levinakayama/test-betsparket.git
 ```
 
-- Faça o pull da imagem **mariadb** (Imagem oficial)
+- Access folder
 ```
-$ docker pull mariadb
+$ cd test-betsparket
 ```
 
 - Escolha uma pasta de preferência e clone o projeto
