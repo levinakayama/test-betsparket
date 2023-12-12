@@ -22,11 +22,21 @@ function App() {
   const validate = async (e) => {
     e.preventDefault()
 
-    /* let res =  */await Api.post('/validate', {
+    let res = await Api.post('/validate', {
       valueX: parseInt(finalX),
       valueY: parseInt(finalY),
       valueZ: parseInt(valueZ),
     })
+
+    if(res===false){
+      setError('Error connecting to server')
+      return
+    }
+
+    if(res.response.code!==0){
+      setError(res.response.msg)
+      return
+    }
   }
 
   const biggerNumberXY = useCallback(() => {
