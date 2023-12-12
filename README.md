@@ -14,13 +14,16 @@
 
 > **_NOTA:_**  Use a Shell terminal.
 
-- Acesse a pasta onde irá clonar o projeto
+- Access a folder of your choice to clone the project
 
-- Faça o pull da imagem **ertfly/php7.4.9-apache-buster**
+- Clone the project
 ```
-$ docker pull ertfly/php7.4.9-apache-buster
+$ git clone git@github.com:levinakayama/test-betsparket.git
 ```
-> **_NOTA:_**  A imagem foi criado por mim e pode validar o Dockerfile no link https://github.com/ertfly/dockerfile-php7.4.9-apache-buster
+or
+```
+$ git clone https://github.com/levinakayama/test-betsparket.git
+```
 
 - Faça o pull da imagem **mariadb** (Imagem oficial)
 ```
