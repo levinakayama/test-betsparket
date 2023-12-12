@@ -88,6 +88,9 @@ function App() {
     setFinalY(v)
 
     let diff = finalX - v;
+    if (diff < 0) {
+      diff = 0;
+    }
     setHeightX(Math.floor((parseInt(diff) / bigger) * 100).toString() + '%')
     setFinalX(diff)
   }
@@ -143,6 +146,9 @@ function App() {
     setFinalX(v)
 
     let diff = finalY - v;
+    if (diff < 0) {
+      diff = 0;
+    }
     setHeightY(Math.floor((parseInt(diff) / bigger) * 100).toString() + '%')
     setFinalY(diff)
   }
