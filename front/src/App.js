@@ -46,7 +46,7 @@ function App() {
 
     if (parseInt(finalX) > 0) {
       setError('Value of X already exists')
-      return;
+      return
     }
 
     if (valueX === '') {
@@ -65,10 +65,17 @@ function App() {
   }
 
   const transferToY = () => {
+    setError('')
+    
+    if (parseInt(finalX) <= 0) {
+      setError('X is empty')
+      return
+    }
+
     let v = parseInt(finalX) + parseInt(finalY)
     if (v > parseInt(valueY)) {
-      setError('Y value does not accommodate this volume.');
-      return;
+      setError('Y value does not accommodate this volume.')
+      return
     }
 
     let bigger = biggerNumberXY()
@@ -82,7 +89,7 @@ function App() {
   const emptyX = () => {
     setError('')
     setHeightX('0%')
-    setFinalX(0);
+    setFinalX(0)
   }
 
   const fillY = () => {
@@ -90,7 +97,7 @@ function App() {
 
     if (parseInt(finalY) > 0) {
       setError('Value of X already exists')
-      return;
+      return
     }
 
     if (valueY === '') {
@@ -109,10 +116,15 @@ function App() {
   }
 
   const transferToX = () => {
+    if (parseInt(finalY) <= 0) {
+      setError('Y is empty')
+      return
+    }
+
     let v = parseInt(finalY) + parseInt(finalX)
     if (v > parseInt(valueX)) {
-      setError('X value does not accommodate this volume.');
-      return;
+      setError('X value does not accommodate this volume.')
+      return
     }
 
     let bigger = biggerNumberXY()
@@ -126,7 +138,7 @@ function App() {
   const emptyY = () => {
     setError('')
     setHeightY('0%')
-    setFinalY(0);
+    setFinalY(0)
   }
 
   useEffect(() => {
