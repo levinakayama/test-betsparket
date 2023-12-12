@@ -48,21 +48,19 @@ ports:
   - '3000:3000'
 ```
 
-
-- Copie o arquivo **docker-compose.sample.yml** renomeando para **docker-compose.yml**
+- Access folder back
 ```
-cp docker-compose.sample.yml docker-compose.yml
-```
-> **_NOTA:_**  Os arquivos copiados estão aplicados no .gitignore, e não causará efeitos de modificação
-
-- Acesse a pasta do Laravel.
-```
-cd server
+cd back/
 ```
 
-- Copie o arquivo **.env.example** renomeando para **.env**
+- Copy ***sample.env*** to ***.env***
 ```
-cp .env.example .env
+cp sample.env .env
+```
+
+- Back folder and access frontend folder
+```
+cd ../front/
 ```
 > **_NOTA:_**  Não mexa no arquivo **.env** pois já esta configurando com a estrutura dos containers
 > **_NOTA:_**  O docker-compose foi configurado para que os containers tenha o seus hosts utilizando o atributo ***container_name**, exemplo o **DB_HOST** do arquivo **.env** ficaria **DB_HOST=teste.db** o nome dado no atributo, então é necessário que o docker-compose, na versão sitada, suba os containers com os nomes definidos, caso não terá que alterar os dados de acesso do banco, caso OK não precisa alterar pode deixar os dados como estão apenas execute a cópia.
