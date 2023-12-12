@@ -5,7 +5,6 @@ import Api from './axios'
 import InputMask from './InputMask'
 
 function App() {
-
   const [solution,setSolution] = useState(true)
   const [error, setError] = useState('')
 
