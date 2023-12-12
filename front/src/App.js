@@ -6,6 +6,7 @@ import InputMask from './InputMask'
 
 function App() {
 
+  const [solution,setSolution] = useState(true)
   const [error, setError] = useState('')
 
   const [heightX, setHeightX] = useState('0%')
@@ -162,13 +163,15 @@ function App() {
 
   const checkSolution = useCallback(() => {
     setError('')
+    setSolution(true)
     let bigger = biggerNumberXY()
     let z = parseInt(valueZ)
     if ((bigger % 2) !== (z % 2)) {
+      setSolution(false)
       setError('NO SOLUCION...')
       return
     }
-  }, [setError, biggerNumberXY, valueZ])
+  }, [setError, biggerNumberXY, valueZ, setSolution])
 
   useEffect(() => {
     setError('')
@@ -191,10 +194,10 @@ function App() {
 
   return (
     <div className='container'>
-      <h1 className='text-center mt-5'>Water Jug Challenge</h1>
-      {error ? <div className='alert alert-danger'>{error}</div> : ''}
+      <h1 className='text-center m-0 mt-5'>Water Jug Challenge</h1>
+      {error ? <div className='alert alert-danger m-0 mt-5'>{error}</div> : ''}
       <form onSubmit={validate}>
-        <div className='row mt-5'>
+        <div className='row mt-3'>
           <div className='col-md-4 form-group'>
             <label className='d-block text-center'>Bucket X</label>
             <InputMask mask="num" value={valueX} onChange={v => setValueX(v)} onBlur={_ => emptyX()} placeholder='Value X' className='form-control' />
@@ -244,7 +247,7 @@ function App() {
         </div>
         <div className='row mt-4 pb-4'>
           <div className='col-md-12'>
-            <button type='submit' className='btn btn-primary btn-lg btn-block'>Validate</button>
+            <button type='submit' className='btn btn-primary btn-lg btn-block' disabled={!solution}>Validate</button>
           </div>
         </div>
       </form>
