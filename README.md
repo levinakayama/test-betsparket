@@ -36,10 +36,18 @@ cd test-betsparket
 cp sample-docker-compose.yml docker-compose.yml
 ```
 
-- Acesse a pasta do projeto
-```
-cd teste-redbelt
-```
+- Change the ***docker-compose.yml*** file if you have conflicts in the backend container port
+...
+ports:
+  - '8040:8000'
+...
+
+- Change the ***docker-compose.yml*** file if you have conflicts in the frontend container port
+...
+ports:
+  - '3000:3000'
+...
+
 
 - Copie o arquivo **docker-compose.sample.yml** renomeando para **docker-compose.yml**
 ```

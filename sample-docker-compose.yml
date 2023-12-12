@@ -5,7 +5,7 @@ services:
     build: ./back
     restart: always
     ports:
-      - '8000:8000'
+      - '8040:8000'
     volumes:
       - ./back:/app
     dns: 
