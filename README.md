@@ -20,7 +20,8 @@
 ```
 $ git clone git@github.com:levinakayama/test-betsparket.git
 ```
-or
+
+- Or
 ```
 $ git clone https://github.com/levinakayama/test-betsparket.git
 ```
