@@ -1,0 +1,6 @@
+**.DS_Store
+/back/.env
+/back/air
+/back/tmp/*
+/docker-compose.yml
+
