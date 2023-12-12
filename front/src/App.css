@@ -1,0 +1,8 @@
+.bucket {
+    border-left: 3px solid #333;
+    border-right: 3px solid #333;
+    border-bottom: 3px solid #333;
+    border-top: 1px solid #ccc;
+    height: 300px;
+    width: 100%;
+}
