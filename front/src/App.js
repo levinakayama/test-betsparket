@@ -66,13 +66,18 @@ function App() {
 
   const transferToY = () => {
     setError('')
-    
+
     if (parseInt(finalX) <= 0) {
       setError('X is empty')
       return
     }
 
-    let v = parseInt(finalX) + parseInt(finalY)
+    let transf = parseInt(finalX);
+    if (transf > parseInt(valueY)) {
+      transf = parseInt(valueY);
+    }
+
+    let v = transf + parseInt(finalY)
     if (v > parseInt(valueY)) {
       setError('Y value does not accommodate this volume.')
       return
@@ -82,8 +87,9 @@ function App() {
     setHeightY(Math.floor((parseInt(v) / bigger) * 100).toString() + '%')
     setFinalY(v)
 
-    setHeightX('0%')
-    setFinalX(0)
+    let diff = finalX - v;
+    setHeightX(Math.floor((parseInt(diff) / bigger) * 100).toString() + '%')
+    setFinalX(diff)
   }
 
   const emptyX = () => {
@@ -121,7 +127,12 @@ function App() {
       return
     }
 
-    let v = parseInt(finalY) + parseInt(finalX)
+    let transf = parseInt(finalY);
+    if (transf > parseInt(valueX)) {
+      transf = parseInt(valueX);
+    }
+
+    let v = transf + parseInt(finalX)
     if (v > parseInt(valueX)) {
       setError('X value does not accommodate this volume.')
       return
@@ -131,8 +142,9 @@ function App() {
     setHeightX(Math.floor((parseInt(v) / bigger) * 100).toString() + '%')
     setFinalX(v)
 
-    setHeightY('0%')
-    setFinalY(0)
+    let diff = finalY - v;
+    setHeightY(Math.floor((parseInt(diff) / bigger) * 100).toString() + '%')
+    setFinalY(diff)
   }
 
   const emptyY = () => {
@@ -156,6 +168,8 @@ function App() {
       setError('Y must be greater than zero')
       return
     }
+    setFinalX(0)
+    setFinalY(0)
     setHeightZ(Math.floor((parseInt(valueZ) / bigger) * 100).toString() + '%')
   }, [valueX, valueY, valueZ, setHeightZ, biggerNumberXY])
 
