@@ -1,22 +1,21 @@
-## TEST BETSPARKET
+# TEST BETSPARKET
 
-# Periodo de desenvolvimento
-- Início: 25/04/2022
-- Fim: 28/04/2022
-
-# Requisitos
+## Requirements
 - Docker
 - Docker Compose (version '2')
 
-# Entendendo a estrutura 
+## Understanding the structure
+
+### Back-End folder (Go)
 ```
-.
-+-- node (pasta do node - desenvolvimento front)
-+-- server (pasta do laravel - desenvolvimento back)
-|   +-- public (fiz o npm rum build no node e copiei o build para a raiz)
-        +-- api (pasta do laravel onde tem a raiz da /api)
+/back 
+
 ```
-> **_NOTA:_**  Nas pastas **public** e **public/api** já tem o htaccess para tratar as rotas
+
+### Front-End folder (React.js)
+```
+/front 
+```
 
 # Instruções de instalação #
 - Acesse a pasta onde irá clonar o projeto
