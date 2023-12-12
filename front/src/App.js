@@ -11,22 +11,25 @@ function App() {
   const [heightY, setHeightY] = useState('0%')
   const [heightZ, setHeightZ] = useState('0%')
 
-  const [valueX, setValueX] = useState('0');
-  const [valueY, setValueY] = useState('0');
-  const [valueZ, setValueZ] = useState('0');
+  const [valueX, setValueX] = useState('0')
+  const [valueY, setValueY] = useState('0')
+  const [valueZ, setValueZ] = useState('0')
+
+  const [finalX, setFinalX] = useState('0')
+  const [finalY, setFinalY] = useState('0')
 
   const validate = async (e) => {
     e.preventDefault()
 
     /* let res =  */await Api.post('/validate', {
-      valueX: parseInt(valueX),
-      valueY: parseInt(valueY),
+      valueX: parseInt(finalX),
+      valueY: parseInt(finalY),
       valueZ: parseInt(valueZ),
     })
   }
 
   const biggerNumberXY = useCallback(() => {
-    let n = 0;
+    let n = 0
     if (parseInt(valueX) > n) {
       n = parseInt(valueX)
     }
@@ -43,20 +46,21 @@ function App() {
 
     if (valueX === '') {
       setError('Fill X required!')
-      return;
+      return
     }
 
     if (valueX === '0') {
       setError('Fill X value more then zero!')
-      return;
+      return
     }
 
     let bigger = biggerNumberXY()
-    setHeightX(Math.floor((parseInt(valueX) / bigger) * 100).toString() + '%');
+    setHeightX(Math.floor((parseInt(valueX) / bigger) * 100).toString() + '%')
+    setFinalX(parseInt(valueX))
   }
 
   const emptyX = () => {
-    setHeightX('0%');
+    setHeightX('0%')
   }
 
   const fillY = () => {
@@ -64,26 +68,27 @@ function App() {
 
     if (valueY === '') {
       setError('Fill X required!')
-      return;
+      return
     }
 
     if (valueY === '0') {
       setError('Fill X value more then zero!')
-      return;
+      return
     }
 
     let bigger = biggerNumberXY()
-    setHeightY(Math.floor((parseInt(valueY) / bigger) * 100).toString() + '%');
+    setHeightY(Math.floor((parseInt(valueY) / bigger) * 100).toString() + '%')
+    setFinalY(parseInt(valueY))
   }
 
   const emptyY = () => {
-    setHeightY('0%');
+    setHeightY('0%')
   }
 
   useEffect(() => {
     console.log(valueZ)
     let bigger = biggerNumberXY()
-    setHeightZ(Math.floor((parseInt(valueZ) / bigger) * 100).toString() + '%');
+    setHeightZ(Math.floor((parseInt(valueZ) / bigger) * 100).toString() + '%')
   }, [valueZ, setHeightZ, biggerNumberXY])
 
   return (
@@ -142,7 +147,7 @@ function App() {
         </div>
       </form>
     </div>
-  );
+  )
 }
 
 export default App
