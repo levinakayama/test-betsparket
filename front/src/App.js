@@ -119,9 +119,22 @@ function App() {
   }
 
   useEffect(() => {
+    setError('')
     let bigger = biggerNumberXY()
+    if (parseInt(valueZ) > bigger) {
+      setError('Z cannot be greater than X and Y')
+      return
+    }
+    if (parseInt(valueX) <= 0) {
+      setError('X must be greater than zero')
+      return
+    }
+    if (parseInt(valueY) <= 0) {
+      setError('Y must be greater than zero')
+      return
+    }
     setHeightZ(Math.floor((parseInt(valueZ) / bigger) * 100).toString() + '%')
-  }, [valueZ, setHeightZ, biggerNumberXY])
+  }, [valueX, valueY, valueZ, setHeightZ, biggerNumberXY])
 
   return (
     <div className='container'>
