@@ -200,7 +200,7 @@ function App() {
             <button type='button' className='btn btn-outline-danger btn-block' onClick={_ => emptyY()}>Empty</button>
           </div>
         </div>
-        <div className='row mt-4'>
+        <div className='row mt-4 pb-4'>
           <div className='col-md-12'>
             <button type='submit' className='btn btn-primary btn-lg btn-block'>Validate</button>
           </div>
