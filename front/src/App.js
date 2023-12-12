@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import './App.css'
 import Api from './axios'
@@ -25,7 +25,7 @@ function App() {
     })
   }
 
-  const biggerNumberXY = () => {
+  const biggerNumberXY = useCallback(() => {
     let n = 0;
     if (parseInt(valueX) > n) {
       n = parseInt(valueX)
@@ -36,7 +36,7 @@ function App() {
     }
 
     return n
-  }
+  }, [valueX, valueY])
 
   const fillX = () => {
     setError('')
@@ -79,6 +79,12 @@ function App() {
   const emptyY = () => {
     setHeightY('0%');
   }
+
+  useEffect(() => {
+    console.log(valueZ)
+    let bigger = biggerNumberXY()
+    setHeightZ(Math.floor((parseInt(valueZ) / bigger) * 100).toString() + '%');
+  }, [valueZ, setHeightZ, biggerNumberXY])
 
   return (
     <div className='container'>
