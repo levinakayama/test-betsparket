@@ -114,17 +114,17 @@ function App() {
         <div className='row'>
           <div className='col-md-4 d-flex justify-content-center'>
             <div className='bucket d-flex align-items-end'>
-              <div className='bucket-water' style={{ height: heightX }}></div>
+              <div className='bucket-water bg-primary' style={{ height: heightX }}></div>
             </div>
           </div>
           <div className='col-md-4 d-flex justify-content-center'>
             <div className='bucket d-flex align-items-end'>
-              <div className='bucket-water' style={{ height: heightY }}></div>
+              <div className='bucket-water bg-primary' style={{ height: heightY }}></div>
             </div>
           </div>
           <div className='col-md-4 d-flex justify-content-center'>
             <div className='bucket d-flex align-items-end'>
-              <div className='bucket-water' style={{ height: heightZ }}></div>
+              <div className='bucket-water bg-warning' style={{ height: heightZ }}></div>
             </div>
           </div>
         </div>
