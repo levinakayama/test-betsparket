@@ -5,9 +5,12 @@
 - Docker Compose (version '2')
 
 ## Understanding the structure
-- ***/back*** folder backend
+- ***/back*** (backend folder Go)
+  - controllers/ (application layer)
+  - helpers/ (helpers)
+- ***/front*** (frontend folder React.js)
 
-# Instruções de instalação #
+## Installation Instructions
 - Acesse a pasta onde irá clonar o projeto
 
 - Faça o pull da imagem **ertfly/php7.4.9-apache-buster**
