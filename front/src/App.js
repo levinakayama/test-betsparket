@@ -109,7 +109,18 @@ function App() {
   }
 
   const transferToX = () => {
+    let v = parseInt(finalY) + parseInt(finalX)
+    if (v > parseInt(valueX)) {
+      setError('X value does not accommodate this volume.');
+      return;
+    }
 
+    let bigger = biggerNumberXY()
+    setHeightX(Math.floor((parseInt(v) / bigger) * 100).toString() + '%')
+    setFinalX(v)
+
+    setHeightY('0%')
+    setFinalY(0)
   }
 
   const emptyY = () => {
