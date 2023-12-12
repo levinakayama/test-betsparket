@@ -5,17 +5,7 @@
 - Docker Compose (version '2')
 
 ## Understanding the structure
-
-### Back-End folder (Go)
-```
-/back 
-
-```
-
-### Front-End folder (React.js)
-```
-/front 
-```
+- ***/back*** folder backend
 
 # Instruções de instalação #
 - Acesse a pasta onde irá clonar o projeto
